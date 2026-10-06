@@ -1,0 +1,14 @@
+# Runtime parameters — loaded by AgentRegistry, passed as Graph(config=...).
+# Separate from config/agent.yaml (the static manifest).
+
+# Backbone retry budget, read by the framework's routing.
+max_retry: 3
+
+# Request deadline in seconds, enforced by the HTTP entry adapter.
+timeout_s: 30
+
+# Largest document this agent will release, in characters. Forwarded to the
+# inner workflow graph and enforced by the output gate: a document beyond the
+# limit is withheld, never truncated, because a truncated statutory disclosure
+# is missing sections the caller was told it contains. Clamped to 1,000–200,000.
+max_report_chars: 40000
